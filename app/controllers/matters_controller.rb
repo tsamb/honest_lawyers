@@ -15,6 +15,7 @@ class MattersController < ApplicationController
     #Will have to look up user from cookie
       #Unless there is a way to use form helpers to make user_id show up in params
     #Once 'user', 'client', and 'description' are defined, create new Matter
+    #Matter will by default have 'open' attribute set to true
     #redirect_to matter_path(matter)
   end
 
@@ -29,5 +30,22 @@ class MattersController < ApplicationController
   def index
     #look up User via session
     #look up all Matters for user
+  end
+
+  def edit
+    #look up Matter based on params[:id]
+    #probably will only care about editing description in view
+  end
+
+  def update
+    #look up Matter based on params
+    #update description based on params
+    #redirect to matter_path(matter)
+  end
+
+  def close
+    #look up Matter based on params[:id]
+    #set 'open' to 'false'
+    #redirect to matter_path(matter)? or to user_path(current_user)
   end
 end
