@@ -1,9 +1,20 @@
-<!--
-Matter:
-Cient:
-Total Time:
 
-Button - Close Matter
-Button - Edit Matter Description
-Button - Add Task
--->
+Description: <%= @matter.description%> <br>
+Client: <%= @matter.client.name %><br>
+Total Time:<%= @total %><br>
+
+Button - Close Matter<br>
+Button - Edit Matter Description<br>
+Button - Add Task<br>
+
+<br><br>
+TASKS<br>
+<% @tasks.each do |task| %>
+  Description: <%= task.description %><br>
+  Start time: <%= task.start_time %><br>
+  Time units: ldkf<br>
+  <%= link_to "Edit task", edit_task_path(task) %><br>
+  <br><br>
+<% end %>
+
+
