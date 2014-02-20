@@ -25,6 +25,7 @@ m1.tasks.create(type_id: 1, description: "initial legal research on tort law", s
 m1.tasks.create(type_id: 1, description: "further research into damage by superheroes", start_time: "2014-01-25 [14:00:00]", end_time: "2014-01-25 [17:14:00]" )
 m1.tasks.create(type_id: 5, description: "call to Lex", start_time: "2014-01-28 [20:45:05]", end_time: "2014-01-28 [23:45:00]" )
 m1.tasks.create(type_id: 2, description: "drafting submissions for court", start_time: "2014-02-10 [08:05:00]", end_time: "2014-02-10 [15:00:00]" )
+m1.tasks.create(type_id: 3, description: "test entry for timer", start_time: Time.now - 300)
 
 m2 = Matter.create(description: "Sue ghosts for mental shock tort" , number: "222444" , user_id: 1, client_id: 2, open: true)
 
