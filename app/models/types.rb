@@ -1,3 +1,3 @@
-class Types < ActiveRecord::Base
+class Type < ActiveRecord::Base
   belongs_to :task
 end
