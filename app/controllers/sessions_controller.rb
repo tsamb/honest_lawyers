@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   def new
     #login page
   end
@@ -14,5 +14,6 @@ class SessionController < ApplicationController
   def destroy
     #logout page
     #clear session
+  end
 
 end
