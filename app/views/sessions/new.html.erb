@@ -4,10 +4,6 @@
 <h2>Sign in</h2>
 <%= form_tag({action: :create}, method: :post) do %>
   <p>
-    <%= label_tag(:name, "Name:") %>
-    <%= text_field_tag(:name) %>
-  </p>
-  <p>
     <%= label_tag(:email, "Email address:") %>
     <%= text_field_tag(:email) %>
   </p>
