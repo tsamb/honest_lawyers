@@ -1,4 +1,10 @@
 HonestLawyers::Application.routes.draw do
+    resources :users
+    resources :matters do
+      resources :tasks, only: [:create, :index]
+    end
+
+    resources :tasks, only: [:show, :stop, :edit, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
