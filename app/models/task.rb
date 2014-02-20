@@ -1,4 +1,4 @@
 class Task < ActiveRecord::Base
   belongs_to :matter
-  has_many :types
+  belongs_to :type
 end
