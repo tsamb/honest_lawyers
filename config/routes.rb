@@ -8,6 +8,8 @@ HonestLawyers::Application.routes.draw do
     end
 
     resources :tasks, only: [:show, :stop, :edit, :update]
+
+    get '/matters/:id/close', to: 'matters#close', as: 'close_matter'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
