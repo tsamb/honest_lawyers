@@ -25,6 +25,19 @@ class MattersController < ApplicationController
     #look up Client associated with matter
     #look up all Tasks belonging to matter
     #somehow or another, total up all hours spent on tasks
+
+    # redirect_to root_path unless params[:id] != current_user.id
+    @matter = Matter.find(params[:id])
+    @tasks = @matter.tasks
+
+    @total = 0
+    @tasks.each do |task|
+      if task.end_time
+        time = task.end_time - task.start_time
+        @total += time
+      end
+    end
+
   end
 
   def index
