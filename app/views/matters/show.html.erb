@@ -1,7 +1,7 @@
 
 Description: <%= @matter.description%> <br>
 Client: <%= @matter.client.name %><br>
-Total Time:<%= @total %><br>
+Total Time:<%= @total_string %><br>
 
 Button - Close Matter<br>
 Button - Edit Matter Description<br>
@@ -12,7 +12,7 @@ TASKS<br>
 <% @tasks.each do |task| %>
   Description: <%= task.description %><br>
   Start time: <%= task.start_time %><br>
-  Time units: ldkf<br>
+  Time units: <%= task.time_units %><br>
   <%= link_to "Edit task", edit_task_path(task) %><br>
   <br><br>
 <% end %>
