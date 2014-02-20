@@ -1,15 +1,27 @@
+<br><br>
 
-Description: <%= @matter.description%> <br>
+Description: <span id="description_field"><%= @matter.description%></span> <br>
 Client: <%= @matter.client.name %><br>
-Total Time:<%= @total_string %><br>
+Total Time: <%= @total_string %><br>
 
+<div id="matter_info">
 <% if @matter.open %>
-  <%= link_to "Close Matter", close_matter_path(@matter) %><br>
+  <%= link_to "Close Matter", close_matter_path(@matter), remote: true %><br>
 <% else %>
   Matter is CLOSED
 <% end %>
+</div>
 <br>
-<%= link_to "Edit Matter Description", edit_matter_path(@matter) %><br>
+<div id="matter_edit">
+  <%= link_to "Edit Matter Description", edit_matter_path(@matter) %><br>
+</div>
+<div id="edit_matter_form" class="hide">
+  <%= form_for(@matter, remote: true) do |f| %>
+    <%= f.label "Description", :description %>
+    <%= f.text_field :description %>
+    <%= f.submit "Change description" %>
+  <% end %>
+</div>
 <%= link_to "Add Task", matter_tasks_path(@matter), method: :post %><br>
 
 
