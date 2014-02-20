@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-TaskType.create(name:"research")
-TaskType.create(name:"writing")
-TaskType.create(name:"court appearance")
-TaskType.create(name:"travel")
-TaskType.create(name:"telephone call")
-TaskType.create(name:"email correspondence")
+Type.create(name:"research")
+Type.create(name:"writing")
+Type.create(name:"court appearance")
+Type.create(name:"travel")
+Type.create(name:"telephone call")
+Type.create(name:"email correspondence")
 
-User.create(name: "Harvey Birdman", email: "harvey@sebben.com", password: "password")
-User.create(name: "Lois Lane", email: "lois@dailyplanet.com", password: "password")
+User.create(name: "Harvey Birdman", email: "harvey@sebben.com", password: "password", password_confirmation: "password")
+User.create(name: "Lois Lane", email: "lois@dailyplanet.com", password: "password", password_confirmation: "password")
 
 Client.create(name: "LexCorp", number: "555123")
 Client.create(name: "Scooby Snacks Inc", number: "777456")
@@ -29,8 +29,8 @@ m1.tasks.create(type_id: 2, description: "drafting submissions for court", start
 m2 = Matter.create(description: "Sue ghosts for mental shock tort" , number: "222444" , user_id: 1, client_id: 2, open: true)
 
 m3 = Matter.create(description: "Lex Luthor's biography", number: "555000" , user_id: 2, client_id: 1, open: true)
-m4 = Matter.create(description: "Investigative piece on spooky places", number: , user_id: 2, client_id: 2, open: true)
+m4 = Matter.create(description: "Investigative piece on spooky places", number: "666999", user_id: 2, client_id: 2, open: true)
 
-m5 = Matter.create(description: "Advertorial for underwater tourism", number: , user_id: 2, client_id: 3, open: true)
+m5 = Matter.create(description: "Advertorial for underwater tourism", number: "888000" , user_id: 2, client_id: 3, open: true)
 m5.tasks.create(type_id: 1, description: "read up about deep sea creature", start_time: 1392122100, end_time: 1392125700)
 m5.tasks.create(type_id: 5, description: "interview Captain Murphy about deep sea life", start_time: 1392215700, end_time: 1392217140)

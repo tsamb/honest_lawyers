@@ -5,6 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.datetime :start_time
       t.datetime :end_time
       t.belongs_to :matter
+      t.belongs_to :type
 
       t.timestamps
     end
