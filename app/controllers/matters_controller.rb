@@ -85,7 +85,9 @@ class MattersController < ApplicationController
   end
 
   def close
-    render text: "CLOSING!"
+    matter = Matter.find(params[:id])
+    matter.update(open: false)
+    redirect_to matter_path(matter)
     #look up Matter based on params[:id]
     #set 'open' to 'false'
     #redirect to matter_path(matter)? or to user_path(current_user)
