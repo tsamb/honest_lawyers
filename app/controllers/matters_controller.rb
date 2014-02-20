@@ -1,30 +1,40 @@
 class MattersController < ApplicationController
+
   def new
-    #Form for creating a new matter
-    #will need to know the User creating the matter
-    #probably will look up the User via cookie
-    #will need to look up Clients for the User to fill in the Clients menu
+
+    @user = User.find(params[:user_id])
+    @clients = Client.all.to_a
+    @clients.insert(0, Client.new)
   end
 
   def create
-    #Will have to parse to determine 'client'
-      #You can either select a :client or fill out :new_client field in form
-      #Determine if :new_client or :client
-      #If :new_client, create new Client with value of :new_client field
-      #If :client, look up Client
-    #Will have to look up user from cookie
-      #Unless there is a way to use form helpers to make user_id show up in params
-    #Once 'user', 'client', and 'description' are defined, create new Matter
-    #Matter will by default have 'open' attribute set to true
-    #redirect_to matter_path(matter)
+
+    if params[:client][:client_id] != ""
+      client = Client.find(params[:client][:client_id])
+    else
+      client = Client.create(name: params[:new_client], number: 300)
+    end
+
+    user = User.find(params[:user_id])
+    description = params[:matter][:description]
+    matter = user.matters.create(description: description, client: client)
+    redirect_to matter_path(matter)
   end
 
+
   def show
-    #look up Matter based on params[:id]
-    #redirect if matter.user_id != current_user ?
-    #look up Client associated with matter
-    #look up all Tasks belonging to matter
-    #somehow or another, total up all hours spent on tasks
+    @matter = Matter.find(params[:id])
+    @tasks = @matter.tasks
+
+    @total = 0
+    @tasks.each do |task|
+      if task.end_time
+        time = task.end_time - task.start_time
+        @total += time
+      end
+    end
+
+    @total_string = time_formatter(@total)
   end
 
   def index
@@ -32,20 +42,26 @@ class MattersController < ApplicationController
     #look up all Matters for user
   end
 
-  def edit
-    #look up Matter based on params[:id]
-    #probably will only care about editing description in view
-  end
-
   def update
-    #look up Matter based on params
-    #update description based on params
-    #redirect to matter_path(matter)
+
+    @matter = Matter.find(params[:id])
+    @matter.update(description: params[:matter][:description])
+
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   def close
-    #look up Matter based on params[:id]
-    #set 'open' to 'false'
-    #redirect to matter_path(matter)? or to user_path(current_user)
+    @matter = Matter.find(params[:id])
+    @matter.update(open: false)
+
+    respond_to do |format|
+      format.html {
+        redirect_to matter_path(@matter)
+      }
+
+      format.js {}
+    end
   end
 end

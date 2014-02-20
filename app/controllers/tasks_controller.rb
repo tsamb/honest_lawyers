@@ -3,22 +3,20 @@ class TasksController < ApplicationController
   end
 
   def create
-    #tasks routes are nested under matters routes
-    #look up Matter via matter_id in params
-      #matter_id will appear in params because task#create route is nested under matters routes
-    #generate new Task belonging to current_user and 'matter'
-      #type, description will be blank
-      #time_started = Time.now
-    #redirect_to view_task_path(task)
+    matter = Matter.find(params[:matter_id])
+    task = matter.tasks.create(start_time: Time.now)
+    redirect_to task_path(task)
   end
 
   def show
+    task = Task.find(params[:id])
+    render text: task.to_json
     #Maybe give this method another name
     #route will be tasks/:task_id
     #look up Task via task_id
     #'task' will belong to a Matter, which will have an association with a Client
       #This will give us all the info we need for the view
-    
+
 
     #Right now, we are collapsing two things into the show action:
         #if 'type' and 'description' are empty, we see a view with an empty form for filling in those fields

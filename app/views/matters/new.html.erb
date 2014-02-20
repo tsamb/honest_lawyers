@@ -7,3 +7,13 @@ Render client list to select form.
 Render new client form.
 
  -->
+
+<%= form_for([@user, @user.matters.build]) do |f| %>
+  <p><%= f.label "Client", :client %>
+  <%= collection_select(:client, :client_id, @clients, :id, :name) %></p>
+  <p><%= label_tag "New client", :new_client %>
+  <%= text_field_tag :new_client %></p>
+  <p><%= f.label "Description", :description %>
+  <%= f.text_area :description %></p>
+  <%= f.submit %>
+<% end %>
