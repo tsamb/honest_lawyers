@@ -1,4 +1,12 @@
 class MattersController < ApplicationController
+
+  # REVISIT - where to place the following method
+  def time_formatter(seconds)
+    hours = seconds / 1.hour
+    minutes = (seconds % 1.hour) / 1.minute
+    "#{hours.floor} hours, #{minutes.floor} minutes"
+  end
+
   def new
     #Form for creating a new matter
     #will need to know the User creating the matter
@@ -19,6 +27,7 @@ class MattersController < ApplicationController
     #redirect_to matter_path(matter)
   end
 
+
   def show
     #look up Matter based on params[:id]
     #redirect if matter.user_id != current_user ?
@@ -38,6 +47,7 @@ class MattersController < ApplicationController
       end
     end
 
+    @total_string = time_formatter(@total)
   end
 
   def index
