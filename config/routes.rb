@@ -1,5 +1,8 @@
 HonestLawyers::Application.routes.draw do
-    resources :users
+    resources :users do
+      resources :matters, only: [:new]
+    end
+
     resources :matters do
       resources :tasks, only: [:create, :index]
     end
