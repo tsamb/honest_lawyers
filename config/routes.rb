@@ -1,10 +1,15 @@
 HonestLawyers::Application.routes.draw do
-    resources :users
+    resources :users do
+      resources :matters, only: [:new, :create]
+    end
+
     resources :matters do
       resources :tasks, only: [:create, :index]
     end
 
     resources :tasks, only: [:show, :stop, :edit, :update]
+
+    get '/matters/:id/close', to: 'matters#close', as: 'close_matter'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

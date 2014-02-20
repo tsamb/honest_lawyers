@@ -12,10 +12,28 @@ class MattersController < ApplicationController
     #will need to know the User creating the matter
     #probably will look up the User via cookie
     #will need to look up Clients for the User to fill in the Clients menu
+
+    @user = User.find(params[:user_id])
+    @clients = Client.all.to_a
+    @clients.insert(0, Client.new)
   end
 
   def create
-    #Will have to parse to determine 'client'
+
+    if params[:client][:client_id] != ""
+      client = Client.find(params[:client][:client_id])
+    else
+      client = Client.create(name: params[:new_client], number: 300)
+    end
+
+    user = User.find(params[:user_id])
+    description = params[:matter][:description]
+    matter = user.matters.create(description: description, client: client)
+    redirect_to matter_path(matter)
+
+
+
+    # Will have to parse to determine 'client'
       #You can either select a :client or fill out :new_client field in form
       #Determine if :new_client or :client
       #If :new_client, create new Client with value of :new_client field
@@ -67,6 +85,7 @@ class MattersController < ApplicationController
   end
 
   def close
+    render text: "CLOSING!"
     #look up Matter based on params[:id]
     #set 'open' to 'false'
     #redirect to matter_path(matter)? or to user_path(current_user)
