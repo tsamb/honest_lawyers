@@ -1,6 +1,6 @@
 HonestLawyers::Application.routes.draw do
     resources :users do
-      resources :matters, only: [:new]
+      resources :matters, only: [:new, :create]
     end
 
     resources :matters do

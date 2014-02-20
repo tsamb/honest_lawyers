@@ -12,9 +12,18 @@ class MattersController < ApplicationController
     #will need to know the User creating the matter
     #probably will look up the User via cookie
     #will need to look up Clients for the User to fill in the Clients menu
+
+    @user = User.find(params[:user_id])
+    @clients = Client.all.to_a
+    @clients.insert(0, Client.new)
   end
 
   def create
+    client = Client.create(name: params[:new_client], number: 300)
+    user = User.find(params[:user_id])
+    description = params[:description]
+    user.matters.create(description: description, client: client)
+    redirect_to user_path(user)
     #Will have to parse to determine 'client'
       #You can either select a :client or fill out :new_client field in form
       #Determine if :new_client or :client
