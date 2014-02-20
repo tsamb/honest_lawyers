@@ -1,3 +1,3 @@
-class Clients < ActiveRecord::Base
+class Client < ActiveRecord::Base
   has_many :matters
 end
