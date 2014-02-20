@@ -18,23 +18,24 @@ feature 'User sign up' do
         fill_in "Confirm password", with: "password"
       end
       it "should create a user" do
-          expect { click_button "Sign up" }.to change(User, :count).by(1)
+        expect { click_button "Sign up" }.to change(User, :count).by(1)
       end
   end
+
   context "with a blank form" do
     it 'does not create a new user in the database' do
       expect { click_button "Sign up" }.not_to change(User, :count)
     end
   end
-  context "without a password confirmation" do
 
+  context "without a password confirmation" do
     it 'tells the user to enter the same password twice' do
       fill_in "Name",         with: "Ju Lu"
       fill_in "Email",        with: "abc@abc.com"
       fill_in "Password",     with: "password"
 
       click_button "Sign up"
-      page.should have_content "Please make sure you type the same password twice"
+      page.should have_content "Password confirmation can't be blank"
     end
   end
 
@@ -46,7 +47,7 @@ feature 'User sign up' do
       fill_in "Confirm password", with: "password"
 
       click_button "Sign up"
-      page.should have_content "Please enter an email address"
+      page.should have_content "Email can't be blank"
     end
   end
 end
