@@ -7,7 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var secondsLabel = $("#seconds").html();
+      var minutesLabel = $("#minutes").html();
+      var hoursLabel = $("#hours").html();
+      // Replace this line with a call to a helper method to get the user in the session's current task. This DB call would then become Time.now - User.current_task_time or similar.
+      var totalSeconds = <%= (Time.now - User.first.matters.first.tasks.last.start_time).to_i %>;
+      setInterval(setTimer, 1000);
+      $("#hours").click(function() {
+        console.log("Yay for hours!")
+      });
+      function setTimer() {
+        totalSeconds++;
+        $("#seconds").html(pad(totalSeconds%60));
+        $("#minutes").html(pad(parseInt(totalSeconds%3600/60)));
+        $("#hours").html(pad(parseInt(totalSeconds/3600)));
+      }
+      function pad(val) {
+        var val = val.toString();
+        if(val.length < 2) {
+          return "0" + val;
+        } else {
+          return val;
+        }
+      }
+    });
+    </script>
 <!-- Render nav bar from shared folder -->
 
 <%= yield %>
