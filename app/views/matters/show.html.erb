@@ -3,7 +3,12 @@ Description: <%= @matter.description%> <br>
 Client: <%= @matter.client.name %><br>
 Total Time:<%= @total_string %><br>
 
-<%= link_to "Close Matter", close_matter_path(@matter) %><br>
+<% if @matter.open %>
+  <%= link_to "Close Matter", close_matter_path(@matter) %><br>
+<% else %>
+  Matter is CLOSED
+<% end %>
+<br>
 <%= link_to "Edit Matter Description", edit_matter_path(@matter) %><br>
 <%= link_to "Add Task", matter_tasks_path(@matter), method: :post %><br>
 
