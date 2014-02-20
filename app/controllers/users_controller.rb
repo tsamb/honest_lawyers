@@ -14,5 +14,11 @@ class UsersController < ApplicationController
     #calls some kind of #current_task? helper
     #    helper will check if there is an open task
     #    helper will define necessary time variables if there is an open task
+
+
+    #redirect_to root_path unless params[:id] != current_user.id
+    @user = User.find(params[:id])
+    @matters = @user.matters.order('updated_at DESC').limit(5)
+
   end
 end
