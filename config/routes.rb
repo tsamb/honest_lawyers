@@ -1,4 +1,8 @@
 HonestLawyers::Application.routes.draw do
+    get '/login' => 'sessions#new'
+    get '/logout' => 'sessions#destroy'
+    post '/login' => 'sessions#create'
+
     resources :users
     resources :matters do
       resources :tasks, only: [:create, :index]
