@@ -2,9 +2,15 @@ require_relative '../spec_helper'
 
 feature 'User sign up' do
 
+  it "page route is /signup" do
+    visit "/signup"
+    current_url.should have_content '/signup'
+  end
+
   before { visit new_user_path }
 
   context "on sign up page" do
+
     it 'has a form' do
       page.should have_css('form')
     end
