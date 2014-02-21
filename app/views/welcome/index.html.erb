@@ -1,8 +1,21 @@
-Welcome page.
+<h1> Welcome to Matters</h1>
 
-<% if session[:user_id] %>
-  <%= render "shared/navtimer"%>
-  <p>You are signed in...</p>
-<% else %>
-  <p>You are not logged in...</p>
-<% end %>
+
+  <div id="welcome">
+    <% if session[:user_id] %>
+      <p>You are signed in...</p>
+    <% else %>
+      <p>You are not logged in...</p>
+      <h1> Please log in</h1>
+      <%= form_for(:session, url: login_path) do |f| %> <!-- you will have to change login_path to a valid route -->
+      <p><%= f.label :username %>
+        <%= f.text_field :username %>
+      </p>
+      <p><%= f.label :password %>
+        <%= f.password_field :password %>
+      </p>
+      <%= f.submit "log in" %>
+      <% end %>
+      <% end %>
+  </div>
+
