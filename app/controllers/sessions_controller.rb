@@ -5,15 +5,18 @@ class SessionsController < ApplicationController
 
   def create
 
-    @user = User.find_by(email: params[:session][:email].downcase)
-    puts @user
-    if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
-      render user_path(@user)
-    else
-      flash[:signin_error] = "Post successfully created"
-      redirect_to new_session_path
-    end
+     @user = User.find_by(email: params[:session][:email].downcase)
+     #render text: @user.matters.first.description
+
+    if @user.authenticate(params[:session][:password])
+       session[:user_id] = @user.id
+       redirect_to user_path(@user)
+
+     else
+      render text: "error can't login"
+    #   flash[:signin_error] = "Post successfully created"
+    #   redirect_to new_session_path
+     end
 
   end
 

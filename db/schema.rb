@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20140221031013) do
     t.datetime "end_time"
     t.integer  "matter_id"
     t.integer  "type_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
