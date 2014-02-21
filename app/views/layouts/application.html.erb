@@ -14,7 +14,7 @@
       var minutesLabel = $("#minutes").html();
       var hoursLabel = $("#hours").html();
       // Replace this line with a call to a helper method to get the user in the session's current task. This DB call would then become Time.now - User.current_task_time or similar.
-      var totalSeconds = <%= (Time.now - User.first.matters.first.tasks.last.start_time).to_i %>;
+      var totalSeconds = <%= (Time.now - Time.now).to_i %>;
       setInterval(setTimer, 1000);
       $("#hours").click(function() {
         console.log("Yay for hours!")

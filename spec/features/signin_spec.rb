@@ -19,13 +19,13 @@ feature 'User sign in' do
     end
 
     it "should create a user" do
-      expect { click_button "Sign in" }.to change(User, :count).by(1)
+      page.should have_content 'Link to all matters.'
     end
   end
 
   context "with a blank form" do
     it 'does not create a new user in the database' do
-      expect { click_button "Sign in" }.not_to change(User, :count)
+      page.should have_content 'Welcome page.git '
     end
   end
 
