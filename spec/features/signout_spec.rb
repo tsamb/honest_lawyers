@@ -4,9 +4,10 @@ feature 'User sign out' do
 
   context "on any page" do
     it 'clears the session when clicked' do
+
       click_link('Sign out')
       page.should have_content 'Sign in'
-      page.should have_content 'Sign out'
+      page.should have_content 'Sign up'
     end
   end
 
