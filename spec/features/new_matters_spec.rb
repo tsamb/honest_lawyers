@@ -119,3 +119,30 @@ feature "Matter page" do
   # end
 
 end
+
+feature "Add task" do
+  before {
+     @user = User.create(name: "something or other", email: 'foo@foo.net', password: 'password', password_confirmation: 'password')
+     @matter = @user.matters.create(description: 'stuff',
+                                   client: Client.create(name: 'doofus'),
+                                   open: true,
+                                   number: 333)
+     visit matter_path(@matter)
+  }
+
+  it "should have add task link for matter" do
+    expect(page).to have_link("Add Task")
+  end
+
+  it "clicking add task link should create a task" do
+
+     expect { click_link("Add Task") }
+     .to change(Task, :count).by(1)
+  end
+
+   it "clicking add task link should direct to task edit/show page" do
+     click_link("Add Task")
+     expect(page).to have_content("Time Started: #{Task.last.start_time}")
+   end
+
+ end
