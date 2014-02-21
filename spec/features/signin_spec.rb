@@ -2,9 +2,15 @@ require_relative '../spec_helper'
 
 feature 'User sign in' do
 
+  it "should be /login" do
+    visit '/login'
+    current_path.should have_content('login')
+  end
+
   before { visit new_session_path }
 
   context "on sign in page" do
+
     it 'has a form' do
       page.should have_css('form')
       page.should have_content 'Sign in'

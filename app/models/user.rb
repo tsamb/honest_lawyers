@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :matters
+  has_many :tasks, through: :matters
 
   has_secure_password
 
