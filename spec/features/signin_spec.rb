@@ -7,25 +7,42 @@ feature 'User sign in' do
   context "on sign in page" do
     it 'has a form' do
       page.should have_css('form')
+      page.should have_content 'Sign in'
     end
   end
 
-  context "sign up with valid information" do
+  # context "sign in with valid information" do
+  #   before do
+  #       fill_in "Email",        with: 'j@j.com'
+  #       fill_in "Password",     with: '123456'
+  #   end
+
+  #   it "should redirect to correct page upon successful sign in" do
+  #     page.should have_content 'Link to all matters.'
+  #   end
+  # end
+
+  context "sign in with invalid information" do
     before do
-        User.create(name: 'j', email: 'blah@blah.com', password: '123456', password_confirmation: '123456' )
-
-        fill_in "Email",        with: 'blah@blah.com'
-        fill_in "Password",     with: '123456'
+        fill_in "Email",        with: 'ssfkhaslkfhsalkf'
+        fill_in "Password",     with: 'saflwheknflsadkhf'
     end
 
-    it "should create a user" do
-      page.should have_content 'Link to all matters.'
+    it "should render sign in page again" do
+      click_button "Sign in"
+
+      page.should have_content 'Sign in'
+      page.should have_css('form')
     end
   end
 
-  context "with a blank form" do
-    it 'does not create a new user in the database' do
-      page.should have_content 'Welcome page.git '
+  context "sign in with blank form" do
+    it 'renders sign in page' do
+      click_button "Sign in"
+
+      page.should have_content 'Sign in'
+      page.should have_content "Post successfully created"
+      page.should have_css('form')
     end
   end
 

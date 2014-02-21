@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
     puts @user
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to user_path
+      render user_path(@user)
     else
-      flash.now.alert = "Invalid email or password"
-      render "new"
+      flash[:signin_error] = "Post successfully created"
+      redirect_to new_session_path
     end
 
   end

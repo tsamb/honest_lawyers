@@ -17,3 +17,7 @@
 <% end %>
 
   <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+
+<% if flash[:signin_error] %>
+    <div class="notice"><%= flash[:signin_error] %></div>
+<% end %>
