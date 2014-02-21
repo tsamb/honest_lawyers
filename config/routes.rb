@@ -4,9 +4,8 @@ HonestLawyers::Application.routes.draw do
     # end
     root :to => "welcome#index"
 
-    # The two below might be easier to work with. We can implement later
-    # match '/signup',  to: 'users#new',            via: 'get'
-    # match '/signin',  to: 'sessions#new',         via: 'get'
+    match '/signup',  to: 'users#new',            via: 'get'
+    match '/signin',  to: 'sessions#new',         via: 'get'
     match '/signout', to: 'sessions#destroy',     via: 'delete'
 
     resources :sessions, only: [:new, :create, :destroy]

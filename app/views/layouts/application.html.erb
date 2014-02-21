@@ -7,13 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <%= render 'layouts/nav' %>
+
   <% if session[:id] # if current_user. %>
     <%= render "shared/navtimer" %>
   <% end %>
 
-<!-- Render nav bar from shared folder -->
-
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

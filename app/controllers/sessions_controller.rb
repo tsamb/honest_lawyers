@@ -11,15 +11,17 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       render user_path(@user)
     else
-      flash[:signin_error] = "Post successfully created"
+      flash[:signin_error] = "Invalid Email or Password. Please try again."
       redirect_to new_session_path
     end
 
   end
 
   def destroy
-    #logout page
-    #clear session
+    # sign_out
+    # implement sign_out in session helper???
+    session.clear
+    redirect_to root_path
   end
 
   private

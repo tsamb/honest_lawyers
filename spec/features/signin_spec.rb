@@ -41,7 +41,7 @@ feature 'User sign in' do
       click_button "Sign in"
 
       page.should have_content 'Sign in'
-      page.should have_content "Post successfully created"
+      page.should have_content "Invalid Email or Password. Please try again."
       page.should have_css('form')
     end
   end
