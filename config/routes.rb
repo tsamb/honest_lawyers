@@ -6,6 +6,7 @@ HonestLawyers::Application.routes.draw do
 
     resources :sessions, only: [:new, :create, :destroy]
     get '/login' => 'sessions#new'
+    get '/signup' => 'users#new'
 
     resources :users
 
