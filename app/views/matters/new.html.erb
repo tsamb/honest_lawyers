@@ -1,13 +1,3 @@
-<!--
-
-Title: New Matter
-
-Render client list to select form.
-
-Render new client form.
-
- -->
-
 <%= form_for([@user, @user.matters.build]) do |f| %>
   <p><%= f.label "Client", :client %>
   <%= collection_select(:client, :client_id, @clients, :id, :name) %></p>
