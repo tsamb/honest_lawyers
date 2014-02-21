@@ -38,8 +38,7 @@ class MattersController < ApplicationController
   end
 
   def index
-    #look up User via session
-    #look up all Matters for user
+    @matters = current_user.matters
   end
 
   def update
@@ -63,5 +62,31 @@ class MattersController < ApplicationController
 
       format.js {}
     end
+  end
+
+  def search
+    txt = params[:search]
+    @matters = current_user.matters.find(
+                  :all,
+                  :conditions => ['lower(description) like ?', %(%#{txt.downcase}%)] )
+
+  # NOTE: currently only search keyword by description. Case insensitive.
+
+  # Pseudocode to include client name search in sql:
+
+  # select *
+  # from matters m
+  # join user u
+  #   on m.user_id = u.id
+  # join client c
+  #   on m.client_id = c.id
+  # where u.id = 1
+  #   and (     m.description like %%%%%
+  #         or  c.name like %%%%
+  #       )
+
+  # Matter.joins(:user, :client) ---> 3-table joins.
+  # - Need to find out syntax how to use 'where' in multi joins in active record
+  # - Maybe have "advance search" feature?
   end
 end

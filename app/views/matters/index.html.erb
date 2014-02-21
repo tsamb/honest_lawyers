@@ -1,0 +1,14 @@
+<br>
+
+Search by description:<br>
+<%= form_tag search_matter_path, :method => 'get' do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<br><br>
+All your matters sorted by description:
+<br><br>
+<%= render "matters/matterlist" %>
+
+

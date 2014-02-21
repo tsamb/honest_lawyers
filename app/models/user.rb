@@ -10,7 +10,15 @@ class User < ActiveRecord::Base
       task = Task.find(self.current_task_id)
       (Time.now - task.start_time).to_i
     else
-      return nil
+      nil
+    end
+  end
+
+  def current_task
+    if self.current_task_id
+      Task.find(self.current_task_id)
+    else
+      nil
     end
   end
 
