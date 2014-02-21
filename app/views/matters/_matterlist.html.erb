@@ -1,0 +1,12 @@
+<% @matters.each do |matter| %>
+  User: <%= matter.user.name %><br>
+  Client: <%= matter.client.name %><br>
+  Description: <%= matter.description %><br>
+  Status: <% if matter.open %> Open <% else %> Closed <% end %><br>
+  Number: <%= matter.number %><br>
+  Updated at: <%= matter.updated_at %><br>
+  <% if matter.open %>
+    <%= link_to "Add Task", matter_tasks_path(matter), method: :post %>
+  <% end %>
+  <br><br>
+<% end %>
