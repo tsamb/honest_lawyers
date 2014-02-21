@@ -5,6 +5,11 @@ feature 'User sign in' do
   before { visit new_session_path }
 
   context "on sign in page" do
+    it "should be /login" do
+      uri = URI.parse(current_url)
+      "#{uri.path}?#{uri.query}".should == "/login"
+    end
+
     it 'has a form' do
       page.should have_css('form')
       page.should have_content 'Sign in'

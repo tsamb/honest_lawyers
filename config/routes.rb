@@ -5,6 +5,7 @@ HonestLawyers::Application.routes.draw do
     root :to => "welcome#index"
 
     resources :sessions, only: [:new, :create, :destroy]
+    get '/login' => 'sessions#new'
 
     resources :users
 
