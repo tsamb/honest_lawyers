@@ -1,12 +1,20 @@
 <div>
-  <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+  <p>User: <%= (current_user.name) %></p>
+  <p>Current task: <%= (current_user.current_task.description) %></p>
+  <p>Task started: <%= (current_user.current_task.start_time) %></p>
+  <p>Task run time: <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></p>
+  <%= form_for(current_user.current_task, {url: task_path(current_user.current_task), method: :patch}) do |f| %>
+    <%= f.submit("Stop task") %>
+  <% end %>
+
     <script type="text/javascript">
     $(document).ready(function(){
       var secondsLabel = $("#seconds").html();
       var minutesLabel = $("#minutes").html();
       var hoursLabel = $("#hours").html();
-      // Replace this line with a call to a helper method to get the user in the session's current task. This DB call would then become Time.now - User.current_task_time or similar.
-      var totalSeconds = <%= (User.find(session[:id]).current_task_seconds) %>;
+
+      var totalSeconds = <%= (current_user.current_task_seconds) %>;
+
       setInterval(setTimer, 1000);
       function setTimer() {
         totalSeconds++;
