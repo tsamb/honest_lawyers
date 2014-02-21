@@ -6,7 +6,7 @@
       var minutesLabel = $("#minutes").html();
       var hoursLabel = $("#hours").html();
       // Replace this line with a call to a helper method to get the user in the session's current task. This DB call would then become Time.now - User.current_task_time or similar.
-      var totalSeconds = <%= (User.find(session[:id]).current_task_seconds) %>;
+      var totalSeconds = <%= User.find(session[:user_id]).current_task_seconds %>;
       setInterval(setTimer, 1000);
       function setTimer() {
         totalSeconds++;
