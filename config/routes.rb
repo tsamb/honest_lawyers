@@ -3,6 +3,7 @@ HonestLawyers::Application.routes.draw do
     #   root :to => "users#show"
     # end
     root :to => "sessions#new"
+    get '/matters/search', to: 'matters#search', as: 'search_matter'
 
     get '/login' => 'sessions#new'
     get '/logout' => 'sessions#destroy'
@@ -19,6 +20,7 @@ HonestLawyers::Application.routes.draw do
     resources :tasks, only: [:show, :stop, :edit, :update]
 
     get '/matters/:id/close', to: 'matters#close', as: 'close_matter'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
