@@ -1,35 +1,48 @@
-<div>
-  <p>User: <%= (current_user.name) %></p>
-  <p>Current task: <%= (current_user.current_task.description) %></p>
-  <p>Task started: <%= (current_user.current_task.start_time) %></p>
-  <p>Task run time: <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></p>
-  <%= form_for(current_user.current_task, {url: task_path(current_user.current_task), method: :patch}) do |f| %>
-    <%= f.submit("Stop task") %>
-  <% end %>
+<% if current_task %>
+  <div>
+    <% if current_task.description && current_task.type %>
+      <p>Current task: <%= (current_task.description) %></p>
+      <p>Task type: <%= (current_task.type.name) %></p>
+    <% else %>
+      <%= form_for(current_task) do |f| %>
+        <p><%= f.label "Description", :description %>
+        <%= f.text_field :description %></p>
+        <p><%= f.label "Type", :type %>
+        <%= f.text_field :type %></p>
+        <%= f.submit "Submit!!" %>
+      <% end %>
+    <% end %>
+    <p>User: <%= (current_user.name) %></p>
+    <p>Task started: <%= (current_task.start_time) %></p>
+    <p>Task run time: <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></p>
+    <%= form_for(current_task, {url: stop_task_path(current_task), method: :post}) do |f| %>
+      <%= f.submit("Stop task") %>
+    <% end %>
 
-    <script type="text/javascript">
-    $(document).ready(function(){
-      var secondsLabel = $("#seconds").html();
-      var minutesLabel = $("#minutes").html();
-      var hoursLabel = $("#hours").html();
+      <script type="text/javascript">
+      $(document).ready(function(){
+        var secondsLabel = $("#seconds").html();
+        var minutesLabel = $("#minutes").html();
+        var hoursLabel = $("#hours").html();
 
-      var totalSeconds = <%= (current_user.current_task_seconds) %>;
+        var totalSeconds = <%= (current_user.current_task_seconds) %>;
 
-      setInterval(setTimer, 1000);
-      function setTimer() {
-        totalSeconds++;
-        $("#seconds").html(pad(totalSeconds%60));
-        $("#minutes").html(pad(parseInt(totalSeconds%3600/60)));
-        $("#hours").html(pad(parseInt(totalSeconds/3600)));
-      }
-      function pad(val) {
-        var val = val.toString();
-        if(val.length < 2) {
-          return "0" + val;
-        } else {
-          return val;
+        setInterval(setTimer, 1000);
+        function setTimer() {
+          totalSeconds++;
+          $("#seconds").html(pad(totalSeconds%60));
+          $("#minutes").html(pad(parseInt(totalSeconds%3600/60)));
+          $("#hours").html(pad(parseInt(totalSeconds/3600)));
         }
-      }
-    });
-    </script>
-</div>
+        function pad(val) {
+          var val = val.toString();
+          if(val.length < 2) {
+            return "0" + val;
+          } else {
+            return val;
+          }
+        }
+      });
+      </script>
+  </div>
+<% end %>
