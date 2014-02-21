@@ -10,7 +10,7 @@ class TasksController < ApplicationController
 
   def show
     task = Task.find(params[:id])
-    render text: task.to_json
+    render text: "Time Started: #{task.start_time}"
     #Maybe give this method another name
     #route will be tasks/:task_id
     #look up Task via task_id
