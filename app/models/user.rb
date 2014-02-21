@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates_presence_of :email
+  validates_presence_of :email, :password, :name
 
   def current_task_seconds
     if self.current_task_id
