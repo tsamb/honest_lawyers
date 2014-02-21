@@ -23,3 +23,16 @@ h1 {
 #welcome {
   text-align: center;
 }
+
+#signup {
+  text-align: center;
+}
+
+#signupnew {
+  text-align: center;
+}
+
+#signupnew ul {
+  color:red;
+}
+
