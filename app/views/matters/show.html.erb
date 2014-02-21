@@ -26,11 +26,17 @@ Total Time: <%= @total_string %><br>
 
 
 <br><br>
+
 <% unless @tasks.empty? %>
   TASKS<br>
   <% @tasks.each do |task| %>
     Description: <%= task.description %><br>
     Start time: <%= task.start_time %><br>
+    End time: <% if task.end_time %>
+       <%= task.end_time %>
+    <% else %>
+       pending
+    <% end %><br>
     Time units: <%= task.time_units %><br>
     <%= link_to "Edit task", edit_task_path(task) %><br>
     <br><br>
