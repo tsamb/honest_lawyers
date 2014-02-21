@@ -3,16 +3,16 @@ class TasksController < ApplicationController
   end
 
   def create
-    matter = Matter.find(params[:matter_id])
-    user = User.find(session[:id])
-    user.update(current_task_id: params[:matter_id]) # current_user.update(current_task_id: params[:matter_id])
+    matter_id = params[:matter_id]
+    matter = current_user.matters.find(matter_id)
     task = matter.tasks.create(start_time: Time.now)
-    redirect_to task_path(task)
+    current_user.update(current_task_id: task.id)
+    redirect_to edit_task_path(task)
   end
 
   def show
     task = Task.find(params[:id])
-    render text: "Time Started: #{task.start_time}"
+
     #Maybe give this method another name
     #route will be tasks/:task_id
     #look up Task via task_id
@@ -31,18 +31,26 @@ class TasksController < ApplicationController
   end
 
   def stop
-    #look up Task from params[:id]
-    #set end_time to Time.now
-    #redirect to matter_path(task.matter)
+    @task = Task.find(params[:id])
+    @task.update(end_time: Time.now)
+    current_user.update(current_task_id: nil)
+    redirect_to user_path(current_user)
   end
 
   def edit
+    # render text:params.to_json
+    # @task = Task.find(params[:id])
+    # @task.update(params)
     #look up Task
     #display view very similar to one of the two views in #show
       #difference: 'type' and 'desc' are form fields, filled in with current values of 'type' and 'desc'
   end
 
   def update
+    @task = Task.find(params[:id])
+    type = Type.find_by(name: params[:task][:type])
+    @task.update(description: params[:task][:description], type: type)
+    redirect_to task_path(@task)
     #update Task with form info from params
     #redirect_to task_path(task)
   end
