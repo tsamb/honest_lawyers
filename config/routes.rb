@@ -2,7 +2,10 @@ HonestLawyers::Application.routes.draw do
     # authenticated :user do # authenticated only works with devise
     #   root :to => "users#show"
     # end
+
     root :to => "welcome#index"
+    get '/matters/search', to: 'matters#search', as: 'search_matter'
+
 
     resources :sessions, only: [:new, :create, :destroy]
 
@@ -19,6 +22,7 @@ HonestLawyers::Application.routes.draw do
     resources :tasks, only: [:show, :stop, :edit, :update]
 
     get '/matters/:id/close', to: 'matters#close', as: 'close_matter'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
