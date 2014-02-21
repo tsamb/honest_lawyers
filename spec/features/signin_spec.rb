@@ -11,16 +11,19 @@ feature 'User sign in' do
     end
   end
 
-  # context "sign in with valid information" do
-  #   before do
-  #       fill_in "Email",        with: 'j@j.com'
-  #       fill_in "Password",     with: '123456'
-  #   end
+  context "sign in with valid information" do
+    before do
+        User.create(name: 'test', email: 'test@test.com', password: '123456', password_confirmation: '123456')
 
-  #   it "should redirect to correct page upon successful sign in" do
-  #     page.should have_content 'Link to all matters.'
-  #   end
-  # end
+        fill_in "Email",        with: 'test@test.com'
+        fill_in "Password",     with: '123456'
+    end
+
+    it "should redirect to correct page upon successful sign in" do
+      click_button "Sign in"
+      page.should have_content 'See all matters'
+    end
+  end
 
   context "sign in with invalid information" do
     before do
