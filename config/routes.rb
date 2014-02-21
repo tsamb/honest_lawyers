@@ -6,6 +6,8 @@ HonestLawyers::Application.routes.draw do
 
     resources :sessions, only: [:new, :create, :destroy]
 
+    resources :users
+
     resources :users do
       resources :matters, only: [:new, :create]
     end
