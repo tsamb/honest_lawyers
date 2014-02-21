@@ -1,15 +1,23 @@
-<!-- Sign In -->
+<%= form_for(:session, url: sessions_path) do |f| %>
 
-<!-- Render signin form partial -->
-<h2>Sign in</h2>
-<%= form_tag({action: :create}, method: :post) do %>
+  <h2>Sign in</h2>
+
   <p>
-    <%= label_tag(:email, "Email address:") %>
-    <%= text_field_tag(:email) %>
+    <%= f.label(:email, "Email:") %>
+    <%= f.text_field(:email) %>
   </p>
+
   <p>
-    <%= label_tag(:password, "Password:") %>
-    <%= password_field_tag(:password) %>
+    <%= f.label(:password, "Password:") %>
+    <%= f.password_field(:password) %>
   </p>
-  <%= submit_tag("Log in") %>
+
+  <%= f.submit("Sign in") %>
+
+<% end %>
+
+  <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+
+<% if flash[:signin_error] %>
+    <div class="notice"><%= flash[:signin_error] %></div>
 <% end %>
