@@ -1,1 +1,15 @@
-
+<%= form_for(@task) do |f| %>
+  <p><%= f.label "Type", :type %>
+  <% if @task.type %>
+    <%= f.text_field :type, :value => @task.type.name %>
+  <% else %>
+    <%= f.text_field :type %>
+  <% end %> </p>
+  <p><%= f.label "Description", :description %>
+  <%= f.text_field :description %></p>
+  <p><%= f.label "Start time", :start_time %>
+  <%= f.text_field :start_time %></p>
+  <p><%= f.label "End time", :end_time %>
+  <%= f.text_field :end_time %></p>
+  <p><%= f.submit %>
+<% end %>

@@ -22,8 +22,9 @@ Total Time: <%= @total_string %><br>
     <%= f.submit "Change description" %>
   <% end %>
 </div>
-<%= link_to "Add Task", matter_tasks_path(@matter), method: :post %><br>
-
+<% unless current_task %>
+  <%= link_to "Add Task", matter_tasks_path(@matter), method: :post %><br>
+<% end %>
 
 <br><br>
 

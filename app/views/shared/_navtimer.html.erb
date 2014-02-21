@@ -4,7 +4,7 @@
       <p>Current task: <%= (current_task.description) %></p>
       <p>Task type: <%= (current_task.type.name) %></p>
     <% else %>
-      <%= form_for(current_task) do |f| %>
+      <%= form_for(current_task, {url: update_current_task_path(current_task), method: :post}) do |f| %>
         <p><%= f.label "Description", :description %>
         <%= f.text_field :description %></p>
         <p><%= f.label "Type", :type %>

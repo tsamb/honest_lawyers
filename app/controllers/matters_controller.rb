@@ -8,7 +8,6 @@ class MattersController < ApplicationController
   end
 
   def create
-
     if params[:client][:client_id] != ""
       client = Client.find(params[:client][:client_id])
     else
