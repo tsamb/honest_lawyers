@@ -2,7 +2,7 @@ class MattersController < ApplicationController
 
   def new
 
-    @user = User.find(params[:user_id])
+     @user = User.first  #(params[:session][:user_id])
     @clients = Client.all.to_a
     @clients.insert(0, Client.new)
   end
