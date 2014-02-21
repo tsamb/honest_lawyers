@@ -26,6 +26,8 @@ HonestLawyers::Application.routes.draw do
     resources :tasks, only: [:show, :stop, :edit, :update]
 
     get '/matters/:id/close', to: 'matters#close', as: 'close_matter'
+
+    post '/tasks/:id/update_current', to: 'tasks#update_current', as: 'update_current_task'
     post '/tasks/:id/stop', to: 'tasks#stop', as: 'stop_task'
 
   # The priority is based upon order of creation: first created -> highest priority.
