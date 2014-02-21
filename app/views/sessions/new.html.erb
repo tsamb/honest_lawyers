@@ -1,23 +1,26 @@
-<%= form_for(:session, url: sessions_path) do |f| %>
+<div id="signup">
 
-  <h2>Sign in</h2>
+    <%= form_for(:session, url: sessions_path) do |f| %>
 
-  <p>
-    <%= f.label(:email, "Email:") %>
-    <%= f.text_field(:email) %>
-  </p>
+      <h2>Sign in</h2>
 
-  <p>
-    <%= f.label(:password, "Password:") %>
-    <%= f.password_field(:password) %>
-  </p>
+      <p>
+        <%= f.label(:email, "Email:") %>
+        <%= f.text_field(:email) %>
+      </p>
 
-  <%= f.submit("Sign in") %>
+      <p>
+        <%= f.label(:password, "Password:") %>
+        <%= f.password_field(:password) %>
+      </p>
 
-<% end %>
+      <%= f.submit("Sign in") %>
 
-  <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+    <% end %>
 
-<% if flash[:signin_error] %>
-    <div class="notice"><%= flash[:signin_error] %></div>
-<% end %>
+      <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+
+    <% if flash[:signin_error] %>
+        <div class="notice"><%= flash[:signin_error] %></div>
+    <% end %>
+</div>
