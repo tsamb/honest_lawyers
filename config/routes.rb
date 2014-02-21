@@ -2,11 +2,9 @@ HonestLawyers::Application.routes.draw do
     # authenticated :user do # authenticated only works with devise
     #   root :to => "users#show"
     # end
-    root :to => "sessions#new"
+    root :to => "welcome#index"
 
-    get '/login' => 'sessions#new'
-    get '/logout' => 'sessions#destroy'
-    post '/login' => 'sessions#create'
+    resources :sessions, only: [:new, :create, :destroy]
 
     resources :users do
       resources :matters, only: [:new, :create]

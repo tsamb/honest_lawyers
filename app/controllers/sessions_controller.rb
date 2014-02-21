@@ -1,19 +1,30 @@
 class SessionsController < ApplicationController
   def new
-    #login page
+
   end
 
   def create
-    #where directed to from login page
-    #authenticates
-    #sets session[:user_id] if authentication suceeds
-    #redirects to user_path(user) if authentication succeeds
-    #redirects to new_session_path if fails
+
+    @user = User.find_by(email: params[:session][:email])
+    puts @user
+    if @user && @user.authenticate(params[:session][:password])
+      session[:user_id] = @user.id
+      redirect_to root_path, :notice => "Logged in!"
+    else
+      flash.now.alert = "Invalid email or password"
+      render "new"
+    end
+
   end
 
   def destroy
     #logout page
     #clear session
+  end
+
+  private
+  def create_params
+    params.require(:user).permit(:email, :password)
   end
 
 end
