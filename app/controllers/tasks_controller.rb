@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   def create
     matter = Matter.find(params[:matter_id])
-    user = User.find(session[:id])
+    user = User.find(session[:user_id])
     user.update(current_task_id: params[:matter_id]) # current_user.update(current_task_id: params[:matter_id])
     task = matter.tasks.create(start_time: Time.now)
     redirect_to task_path(task)
