@@ -3,6 +3,8 @@
   <%= collection_select(:client, :client_id, @clients, :id, :name) %></p>
   <p><%= label_tag "New client", :new_client %>
   <%= text_field_tag :new_client %></p>
+  <p><%= label_tag "Matter Number", :matter_num %>
+  <%= text_field_tag :matter_num %></p>
   <p><%= f.label "Description", :description %>
   <%= f.text_area :description %></p>
   <%= f.submit %>

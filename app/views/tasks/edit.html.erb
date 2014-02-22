@@ -1,15 +1,15 @@
 <%= form_for(@task) do |f| %>
-  <p><%= f.label "Type", :type %>
+  <p><%= f.label :type, "Type: " %>
   <% if @task.type %>
-    <%= f.text_field :type, :value => @task.type.name %>
+    <%= collection_select(:type, :type_id, Type.all, :id, :name, selected: @task.type.id ) %></p>
   <% else %>
-    <%= f.text_field :type %>
+    <%= collection_select(:type, :type_id, Type.all, :id, :name, prompt: true) %></p>
   <% end %> </p>
-  <p><%= f.label "Description", :description %>
+  <p><%= f.label :description, "Description: " %>
   <%= f.text_field :description %></p>
-  <p><%= f.label "Start time", :start_time %>
+  <p><%= f.label :start_time, "Start time: " %>
   <%= f.text_field :start_time %></p>
-  <p><%= f.label "End time", :end_time %>
+  <p><%= f.label :end_time, "End time: " %>
   <%= f.text_field :end_time %></p>
   <p><%= f.submit %>
 <% end %>

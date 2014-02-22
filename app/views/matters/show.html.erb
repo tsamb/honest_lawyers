@@ -2,6 +2,7 @@
 
 Description: <span id="description_field"><%= @matter.description%></span> <br>
 Client: <%= @matter.client.name %><br>
+Matter Number: <%= @matter.number %><br>
 Total Time: <%= @total_string %><br>
 
 <div id="matter_info">
@@ -31,7 +32,10 @@ Total Time: <%= @total_string %><br>
 <% unless @tasks.empty? %>
   TASKS<br>
   <% @tasks.each do |task| %>
-    Description: <%= task.description %><br>
+    Task Description: <%= task.description %><br>
+    <% if task.type %>
+      Type: <%= task.type.name %><br>
+    <% end %>
     Start time: <%= task.start_time %><br>
     End time: <% if task.end_time %>
        <%= task.end_time %>
@@ -44,3 +48,4 @@ Total Time: <%= @total_string %><br>
   <% end %>
 <% end %>
 
+<%= link_to "Return to profile", user_path(current_user) %>
