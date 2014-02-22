@@ -7,10 +7,10 @@
       <% else %>
       <%= form_for(current_task, {url: update_current_task_path(current_task), method: :post}) do |f| %>
         <div id="task-and-user">
-          <p><%= f.label "Description", :description %>
+          <p><%= f.label :description, "Description: " %>
           <%= f.text_field :description %></p>
-          <p id="task-type-input"><%= f.label "Type", :type %>
-          <%= f.text_field :type %></p>
+          <p id="task-type-input"><%= f.label :type, "Type: " %>
+          <%= collection_select(:type, :type_id, Type.all, :id, :name, prompt: true) %></p>
           <div id="task-submit-button"><%= f.submit "Submit!!" %></div>
         <% end %>
       <% end %>
