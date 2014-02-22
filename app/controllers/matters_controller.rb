@@ -16,7 +16,9 @@ class MattersController < ApplicationController
 
     user = User.find(params[:user_id])
     description = params[:matter][:description]
-    matter = user.matters.create(description: description, client: client)
+    matter = user.matters.create( description: description,
+                                  client: client,
+                                  number: params[:matter_num])
     redirect_to matter_path(matter)
   end
 

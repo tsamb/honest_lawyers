@@ -5,10 +5,10 @@
       <p>Task type: <%= (current_task.type.name) %></p>
     <% else %>
       <%= form_for(current_task, {url: update_current_task_path(current_task), method: :post}) do |f| %>
-        <p><%= f.label "Description", :description %>
+        <p><%= f.label :description, "Description: " %>
         <%= f.text_field :description %></p>
-        <p><%= f.label "Type", :type %>
-        <%= f.text_field :type %></p>
+        <p><%= f.label :type, "Type: " %>
+        <%= collection_select(:type, :type_id, Type.all, :id, :name, prompt: true) %></p>
         <%= f.submit "Submit!!" %>
       <% end %>
     <% end %>

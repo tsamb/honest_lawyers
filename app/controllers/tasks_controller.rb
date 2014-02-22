@@ -32,14 +32,14 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    type = Type.find_by(name: params[:task][:type])
+    type = Type.find_by(id: params[:type][:type_id])
     @task.update(type: type, start_time: params[:task][:start_time], end_time: params[:task][:end_time], description: params[:task][:description])
     redirect_to matter_path(@task.matter)
   end
 
   def update_current
     @task = Task.find(params[:id])
-    type = Type.find_by(name: params[:task][:type])
+    type = Type.find_by(id: params[:type][:type_id])
     @task.update(description: params[:task][:description], type: type)
     redirect_to matter_path(@task.matter)
   end
