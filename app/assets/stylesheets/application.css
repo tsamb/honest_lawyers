@@ -31,7 +31,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   width: 520px;
-  background-color: #fca;
+  background-color: #e5e7ff;
   padding: 30px 40px;
   border-radius: 30px;
 }
@@ -52,6 +52,8 @@ p {
 
 .navtimer #task-and-user p {
   display: inline-block;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .navtimer #task-start-time {
@@ -69,4 +71,17 @@ p {
 
 .navtimer .edit_task {
   text-align: center;
+}
+
+.navtimer input[type=submit] {
+  padding:5px;
+  border:1px solid #d6ff9a;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #e0ffb3;
+  font-size: 1em;
+}
+
+.navtimer #task-submit-button {
+  clear: both;
 }

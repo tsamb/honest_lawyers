@@ -1,9 +1,9 @@
 <% if current_task %>
   <div class="navtimer">
     <% if current_task.description && current_task.type %>
-      <h2>Current task: <%= (current_task.description) %></h2>
+      <h2><%= (current_task.description) %></h2>
       <div id="task-and-user">
-        <p id="task-type">Task type: <%= (current_task.type.name) %></p>
+        <p id="task-type">Type: <%= (current_task.type.name) %></p>
       <% else %>
       <%= form_for(current_task, {url: update_current_task_path(current_task), method: :post}) do |f| %>
         <div id="task-and-user">
@@ -14,9 +14,9 @@
           <div id="task-submit-button"><%= f.submit "Submit!!" %></div>
         <% end %>
       <% end %>
-      <p id="task-user">User: <%= (current_user.name) %></p>
+      <p id="task-user">Author: <%= (current_user.name) %></p>
     </div>
-    <p id="task-start-time">Started at <%= (current_task.start_time) %></p>
+    <p id="task-start-time">Started at <%= current_task.start_time.strftime("%H:%M on %m/%d/%Y") %></p>
     <div id="ticker-container">
       <p id="task-run-time"><label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></p>
       <%= form_for(current_task, {url: stop_task_path(current_task), method: :post}) do |f| %>
