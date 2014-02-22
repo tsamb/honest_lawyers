@@ -1,13 +1,14 @@
-<br>
-NAME: <%= @user.name %><br>
-Email: <%= @user.email %><br>
-<%= link_to "Add matter", new_user_matter_path(@user) %>
-<br><br>
+<div class="container">
+  <br>
+  NAME: <%= @user.name %><br>
+  Email: <%= @user.email %><br>
+  <%= link_to "Add matter", new_user_matter_path(@user) %>
+  <br><br>
 
-RECENT MATTERS: <br><br>
+  RECENT MATTERS: <br><br>
 
-<%= render "matters/matterlist" %>
+  <%= render "matters/matterlist" %>
 
-<br><br>
-<%= link_to "See all matters", matters_path %>
-
+  <br><br>
+  <%= link_to "See all matters", matters_path %>
+</div>

@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+/* ---------- GENERAL LAYOUT ---------- */
+
 h1, h2, h3, h4, h5 {
   font-family: Gafata, sans-serif;
 }
@@ -24,14 +26,141 @@ p {
   display: none;
 }
 
+body {
+  /*background-color: #e5e7ff;*/
+  /*background-color: #f5ffe5;*/
+  background-color: #e5e7ff;
+  font-family: Gafata, sans-serif;
+}
 
-/* Styling for the navtimer partial */
+.float-right {
+  float: right;
+}
+
+.float-left{
+  float: left;
+}
+
+div .container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  width: 65%;
+}
+
+a {
+  text-decoration: none;
+  color: #f85c37;
+  word-wrap: break-word;
+  font-weight: 500;
+
+  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+  transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+  color: #7b7b7b;
+  text-decoration: none;
+  outline: 0;
+}
+
+a:before,
+a:after {
+  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+  transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+.container_body {
+  padding: 100px;
+  text-align: center;
+}
+
+
+/* ------- NAV BAR ---------- */
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    padding-top: 15px;
+
+    -webkit-box-shadow: 0px 0px 8px 0px #000000;
+    -moz-box-shadow: 0px 0px 8px 0px #000000;
+    box-shadow: 0px 0px 8px 0px #000000;
+
+    /*background-color: rgba(1, 1, 1, 0.8);*/
+    /*background-color: #99a0ff;*/
+    background-color: #555555;
+    /*color: rgba(1, 1, 1, 0.8);*/
+
+}
+
+#navigation {
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+nav a {
+    font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #b8f6d9;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #f6d9b8;
+}
+
+/* ------- SIGN-UP / SIGN-IN ------ */
+
+.error {
+  color: red;
+  list-style-type: none;
+}
+
+.new_user, .new_session {
+  margin: 0 auto;
+  padding: 25px;
+  -webkit-box-shadow: 0px 0px 8px 0px #000000;
+  -moz-box-shadow: 0px 0px 8px 0px #000000;
+  box-shadow: 0px 0px 8px 0px #000000;
+  width: 300px;
+  /*height: 40%;*/
+}
+
+.new_user label, .new_session label {
+  float: left;
+}
+
+.new_user input[type=text], input[type=password],
+.new_session input[type=text], input[type=password] {
+  position: relative;
+  float: right;
+  width: 150px;
+}
+
+
+/* ------- NAVTIMER PARTIAL ------- */
 
 .navtimer {
+  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   width: 520px;
-  background-color: #e5e7ff;
+  background-color: #fff1e6;
   padding: 30px 40px;
   border-radius: 30px;
 }
@@ -42,18 +171,12 @@ p {
   font-size: 2em;
 }
 
-.navtimer #task-type {
-
-}
-
 .navtimer p {
   margin: 10px 0;
 }
 
 .navtimer #task-and-user p {
   display: inline-block;
-  margin-left: 40px;
-  margin-right: 40px;
 }
 
 .navtimer #task-start-time {
@@ -74,12 +197,12 @@ p {
 }
 
 .navtimer input[type=submit] {
-  padding:5px;
-  border:1px solid #d6ff9a;
+  padding:10px;
+  border:2px solid #a1f3cd;
   -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background-color: #e0ffb3;
-  font-size: 1em;
+  border-radius: 10px;
+  background-color: #a1f3cd;
+  font-size: 1.25em;
 }
 
 .navtimer #task-submit-button {
