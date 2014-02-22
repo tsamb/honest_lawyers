@@ -1,16 +1,16 @@
-<br>
+<div class="container">
+  Search by description:<br>
+  <%= form_tag search_matter_path, :method => 'get' do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  <% end %>
 
-Search by description:<br>
-<%= form_tag search_matter_path, :method => 'get' do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag "Search" %>
-<% end %>
+  <br><br>
+  All your matters sorted by description:
+  <br><br>
+  <%= render "matters/matterlist" %>
 
-<br><br>
-All your matters sorted by description:
-<br><br>
-<%= render "matters/matterlist" %>
+  <br>
+  <%= link_to "return to profile", user_path(current_user) %>
 
-<br>
-<%= link_to "return to profile", user_path(current_user) %>
-
+</div>

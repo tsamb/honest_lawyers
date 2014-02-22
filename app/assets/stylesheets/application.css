@@ -83,6 +83,26 @@ a:after {
   text-align: center;
 }
 
+/* ------- TABLE ----------- */
+
+table {
+  width: 100%;
+}
+tr:nth-child(odd) {
+  background-color: #b8f6d9;
+}
+tr:nth-child(even) {
+ background-color: #fff1e6;
+}
+
+tr:first-child {
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: thin solid black;
+  /*outline: thin solid black;*/
+  background-color: #b3b9ff;
+}
+
 
 /* ------- NAV BAR ---------- */
 
