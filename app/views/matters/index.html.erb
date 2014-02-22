@@ -5,12 +5,10 @@
     <%= submit_tag "Search" %>
   <% end %>
 
-  <br><br>
-  All your matters sorted by description:
-  <br><br>
+
+  <h3>List of all matters:</h3>
   <%= render "matters/matterlist" %>
 
   <br>
-  <%= link_to "return to profile", user_path(current_user) %>
 
 </div>

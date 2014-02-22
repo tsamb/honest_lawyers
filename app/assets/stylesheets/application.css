@@ -83,6 +83,25 @@ a:after {
   text-align: center;
 }
 
+/* --------- CSS BUTTON ------- */
+
+.css_button {
+  position: relative;
+  float: left;
+  padding: 20px;
+  background-color: #b3b3b3;
+  border-radius: 20px;
+  margin: 30px;
+  text-align: center
+}
+.css_button a {
+  color: white;
+}
+.css_button a:hover {
+  color: #f85c37;
+}
+
+
 /* ------- TABLE ----------- */
 
 table {
@@ -144,14 +163,14 @@ nav a:hover {
     color: #f6d9b8;
 }
 
-/* ------- SIGN-UP / SIGN-IN ------ */
+/* ------- FORMS ------ */
 
 .error {
   color: red;
   list-style-type: none;
 }
 
-.new_user, .new_session {
+.new_user, .new_session, .new_matter, .edit_task {
   margin: 0 auto;
   padding: 25px;
   -webkit-box-shadow: 0px 0px 8px 0px #000000;
@@ -161,12 +180,18 @@ nav a:hover {
   /*height: 40%;*/
 }
 
-.new_user label, .new_session label {
+.new_user label, .new_session label, .new_matter label .edit_task label {
   float: left;
 }
 
-.new_user input[type=text], input[type=password],
-.new_session input[type=text], input[type=password] {
+.new_user input[type=text], .new_user input[type=password],
+.new_session input[type=text],.new_session input[type=password],
+.new_matter input[type=text],
+  .new_matter input[type=password],
+  .new_matter textarea,
+  .new_matter select,
+.edit_task input[type=text], .edit_task select
+{
   position: relative;
   float: right;
   width: 150px;
@@ -228,3 +253,35 @@ nav a:hover {
 .navtimer #task-submit-button {
   clear: both;
 }
+
+/* --------- USER PROFIE --------- */
+.profile_page {
+  padding: 20px;
+  /*outline: thin solid red;*/
+  margin-bottom: 100px;
+}
+#account_info {
+  position: relative;
+  float: right;
+  padding: 20px;
+  background-color: #ccd0ff;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+/* ------ SHOW MATTER ----- */
+
+.bubble {
+  padding: 30px;
+  background-color: #ccd0ff;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
