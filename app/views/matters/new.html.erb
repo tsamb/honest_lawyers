@@ -1,11 +1,20 @@
-<%= form_for([@user, @user.matters.build]) do |f| %>
-  <p><%= f.label "Client", :client %>
-  <%= collection_select(:client, :client_id, @clients, :id, :name) %></p>
-  <p><%= label_tag "New client", :new_client %>
-  <%= text_field_tag :new_client %></p>
-  <p><%= label_tag "Matter Number", :matter_num %>
-  <%= text_field_tag :matter_num %></p>
-  <p><%= f.label "Description", :description %>
-  <%= f.text_area :description %></p>
+<div class="container">
+
+<%= form_for( [@user, @user.matters.build], :html => {:class => "new_matter"} ) do |f| %>
+<h2>Create new matter</h2>
+  <p>
+    <%= f.label :client, "Client" %>
+    <%= collection_select(:client, :client_id, @clients, :id, :name) %><br><br>
+
+    <%= label_tag :new_client, "New client" %>
+    <%= text_field_tag :new_client %><br><br>
+
+    <%= label_tag :matter_num, "Matter Number" %>
+    <%= text_field_tag :matter_num %><br><br>
+
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description %><br><br>
+  </p>
   <%= f.submit %>
 <% end %>
+</div>

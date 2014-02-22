@@ -1,21 +1,27 @@
 <div class="container">
 
-  <br>
-  Description: <span id="description_field"><%= @matter.description%></span> <br>
-  Client: <%= @matter.client.name %><br>
-  Matter Number: <%= @matter.number %><br>
-  Total Time: <%= @total_string %><br>
+  <div class="bubble">
+    <h3>Matter Info: </h3>
+    Description: <span id="description_field"><%= @matter.description%></span> <br>
+    Client: <%= @matter.client.name %><br>
+    Matter Number: <%= @matter.number %><br>
+    Total Time: <%= @total_string %><br>
+  </div>
 
   <div id="matter_info">
-  <% if @matter.open %>
-    <%= link_to "Close Matter", close_matter_path(@matter), remote: true %><br>
-  <% else %>
-    Matter is CLOSED
-  <% end %>
+    <% if @matter.open %>
+      <!-- <div class="css_button"> -->
+        <%= link_to "Close Matter", close_matter_path(@matter), remote: true %><br>
+      <!-- </div> -->
+    <% else %>
+      Matter is CLOSED
+    <% end %>
   </div>
-  <br>
+
   <div id="matter_edit">
-    <%= link_to "Edit Matter Description", edit_matter_path(@matter) %><br>
+    <!-- <div class="css_button"> -->
+      <%= link_to "Edit Matter Description", edit_matter_path(@matter) %><br>
+    <!-- </div> -->
   </div>
   <div id="edit_matter_form" class="hide">
     <%= form_for(@matter, remote: true) do |f| %>
@@ -25,28 +31,42 @@
     <% end %>
   </div>
   <% unless current_task %>
-    <%= link_to "Add Task", matter_tasks_path(@matter), method: :post %><br>
+    <!-- <div class="css_button"> -->
+      <%= link_to "Add Task", matter_tasks_path(@matter), method: :post %><br>
+    <!-- </div> -->
   <% end %>
 
-  <br><br>
+ <!-- <br><br><br><br><br><br><br> -->
 
-  <% unless @tasks.empty? %>
-    TASKS<br>
-    <% @tasks.each do |task| %>
-      Task Description: <%= task.description %><br>
-      <% if task.type %>
-        Type: <%= task.type.name %><br>
-      <% end %>
-      Start time: <%= task.start_time %><br>
-      End time: <% if task.end_time %>
-         <%= task.end_time %>
+<% unless @tasks.empty? %>
+<h2>TASKS</h2>
+<table>
+  <tr>
+    <td>Description</td>
+    <td>Type</td>
+    <td>Start time</td>
+    <td>End time</td>
+    <td>Time Units</td>
+    <td>Edit Task</td>
+  </tr>
+  <% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.description %></td>
+    <% if task.type %>
+      <td><%= task.type.name %></td>
       <% else %>
-         pending
-      <% end %><br>
-      Time units: <%= task.time_units %><br>
-      <%= link_to "Edit task", edit_task_path(task) %><br>
-      <br><br>
+      <td></td>
     <% end %>
+    <td><%= task.start_time %></td>
+    <td><% if task.end_time %>
+       <%= task.end_time %>
+    <% else %>
+       pending
+    <% end %></td>
+    <td><%= task.time_units %></td>
+    <td><%= link_to "Edit task", edit_task_path(task) %></td>
+  </tr>
   <% end %>
+<% end %>
 
 </div>

@@ -1,12 +1,32 @@
-<% @matters.each do |matter| %>
-  Description: <%= link_to matter.description, matter_path(matter) %><br>
-  Author: <%= matter.user.name %><br>
-  Client: <%= matter.client.name %><br>
-  Status: <% if matter.open %> Open <% else %> Closed <% end %><br>
-  Matter Number: #<%= matter.number %><br>
-  Updated at: <%= matter.updated_at %><br>
-  <% if matter.open && !current_task %>
-    <%= link_to "Add Task", matter_tasks_path(matter), method: :post %>
+<table>
+<tr>
+  <td>Description</td>
+  <td>Matter #</td>
+  <td>Author</td>
+  <td>Client</td>
+  <td>Status</td>
+  <td>Last Update</td>
+  <td>Add Task</td>
+</tr>
+
+  <% @matters.each do |matter| %>
+  <tr>
+    <td><%= link_to matter.description, matter_path(matter) %></td>
+    <td><%= matter.number %></td>
+    <td><%= matter.user.name %></td>
+    <td><%= matter.client.name %></td>
+    <td><% if matter.open %> Open <% else %> Closed <% end %></td>
+    <td><%= matter.updated_at %></td>
+    <td>
+      <% if matter.open && !current_task %>
+        <%= link_to "Add Task", matter_tasks_path(matter), method: :post %>
+      <% elsif matter.open == false %>
+        Matter closed
+      <% elsif current_task %>
+        A task is running
+      <% end %>
+    </td>
+  </tr>
   <% end %>
-  <br><br>
-<% end %>
+
+</table>

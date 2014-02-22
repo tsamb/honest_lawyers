@@ -1,14 +1,21 @@
 <div class="container">
-  <br>
-  NAME: <%= @user.name %><br>
-  Email: <%= @user.email %><br>
-  <%= link_to "Add matter", new_user_matter_path(@user) %>
-  <br><br>
+  <div class="profile_page">
+    <div id="account_info">
+      <h4>Your Account Info</h4>
+      <%= @user.name %><br>
+      <%= @user.email %><br><br>
+    </div>
 
-  RECENT MATTERS: <br><br>
+    <div class="css_button">
+    <%= link_to "See all matters", matters_path %>
+    </div>
 
+    <div class="css_button">
+      <%= link_to "Add new matter", new_user_matter_path(@user) %>
+    </div>
+  </div>
+
+  <h3>Recent Matters</h3>
   <%= render "matters/matterlist" %>
 
-  <br><br>
-  <%= link_to "See all matters", matters_path %>
 </div>

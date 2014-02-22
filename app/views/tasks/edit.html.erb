@@ -1,4 +1,7 @@
+<div class="container">
+
 <%= form_for(@task) do |f| %>
+<h2>Edit Task</h2>
   <p><%= f.label :type, "Type: " %>
   <% if @task.type %>
     <%= collection_select(:type, :type_id, Type.all, :id, :name, selected: @task.type.id ) %></p>
@@ -13,3 +16,5 @@
   <%= f.text_field :end_time %></p>
   <p><%= f.submit %>
 <% end %>
+
+</div>
