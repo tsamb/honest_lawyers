@@ -8,15 +8,15 @@
       <%= form_for(current_task, {url: update_current_task_path(current_task), method: :post}) do |f| %>
         <div id="task-and-user">
           <p><%= f.label :description, "Description: " %>
-          <%= f.text_field :description %></p>
+          <%= f.text_field :description, size: 40 %></p>
           <p id="task-type-input"><%= f.label :type, "Type: " %>
           <%= collection_select(:type, :type_id, Type.all, :id, :name, prompt: true) %></p>
-          <div id="task-submit-button"><%= f.submit "Submit!!" %></div>
+          <div id="task-submit-button"><%= f.submit "Submit" %></div>
         <% end %>
       <% end %>
       <p id="task-user">Author: <%= (current_user.name) %></p>
     </div>
-    <p id="task-start-time">Started at <%= current_task.start_time.strftime("%H:%M on %m/%d/%Y") %></p>
+    <p id="task-start-time">Started at: <%= current_task.start_time.strftime("%H:%M ( %m/%d/%Y )") %></p>
     <div id="ticker-container">
       <p id="task-run-time"><label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></p>
       <%= form_for(current_task, {url: stop_task_path(current_task), method: :post}) do |f| %>

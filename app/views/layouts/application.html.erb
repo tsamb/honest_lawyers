@@ -8,9 +8,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%=render "layouts/nav" %>
+  <%= render "layouts/nav" %>
   <%= render "shared/navtimer" %>
-  <%= yield %>
-
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>

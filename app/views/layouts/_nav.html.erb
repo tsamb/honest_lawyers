@@ -1,10 +1,12 @@
 <nav>
-
+<div id="navigation">
   <% if session[:user_id] %>
-    <%= link_to "Sign out", signout_path, method: "delete" %>
+    <%= link_to "Sign out", signout_path, method: "delete", class: "float-right" %>
+    <%= link_to "Home", user_path(current_user), class: "float-left" %>
   <% else %>
-    <%= link_to "Sign in", signin_path %>
-    <%= link_to "Sign up", signup_path %>
+    <%= link_to "Welcome", root_path, class: "float-left" %>
+    <%= link_to "Sign in", signin_path, class: "float-right" %>
+    <%= link_to "Sign up", signup_path, class: "float-right" %>
   <% end %>
-
+</div>
 </nav>

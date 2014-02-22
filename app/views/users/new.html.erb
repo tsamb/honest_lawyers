@@ -1,31 +1,28 @@
-<!-- Sign Up-->
+<div class="container">
+  <div class="container_body">
+    <% if @user.errors.any? %>
+      <ul>
+      <% @user.errors.full_messages.each do |error| %>
+        <li class="error"><%= error %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    <%= form_for(@user) do |f| %>
+      <h2>Sign up</h2>
 
-<!-- Render signup form partial -->
+        <%= f.label(:name, "Name:") %>
+        <%= f.text_field(:name) %><br><br>
 
-<% if @user.errors.any? %>
-  <ul>
-  <% @user.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-<% end %>
-<%= form_for(@user) do |f| %>
-  <h2>Sign up as a new user</h2>
-  <p>
-    <%= f.label(:name, "Name:") %>
-    <%= f.text_field(:name) %>
-  </p>
-  <p>
-    <%= f.label(:email, "Email:") %>
-    <%= f.text_field(:email) %>
-  </p>
-  <p>
-    <%= f.label(:password, "Password:") %>
-    <%= f.password_field(:password) %>
-  </p>
-  <p>
-    <%= f.label(:password_confirmation, "Confirm password:") %>
-    <%= f.password_field(:password_confirmation) %>
-  </p>
-  <%= f.submit("Sign up") %>
-<% end %>
+        <%= f.label(:email, "Email:") %>
+        <%= f.text_field(:email) %><br><br>
+
+        <%= f.label(:password, "Password:") %>
+        <%= f.password_field(:password) %><br><br>
+
+        <%= f.label(:password_confirmation, "Confirm password:") %>
+        <%= f.password_field(:password_confirmation) %><br><br><br>
+
+      <%= f.submit("Sign up") %>
+    <% end %>
+  </div>
+</div>
