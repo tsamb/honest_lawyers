@@ -12,6 +12,61 @@
  *= require_tree .
  */
 
+h1, h2, h3, h4, h5 {
+  font-family: Gafata, sans-serif;
+}
+
+p {
+  font-family: Gafata, sans-serif;
+}
+
 .hide {
   display: none;
+}
+
+
+/* Styling for the navtimer partial */
+
+.navtimer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 520px;
+  background-color: #fca;
+  padding: 30px 40px;
+  border-radius: 30px;
+}
+
+.navtimer h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 2em;
+}
+
+.navtimer #task-type {
+
+}
+
+.navtimer p {
+  margin: 10px 0;
+}
+
+.navtimer #task-and-user p {
+  display: inline-block;
+}
+
+.navtimer #task-start-time {
+  text-align: center;
+}
+
+.navtimer #task-and-user p:nth-child(2) {
+  float: right;
+}
+
+.navtimer #ticker-container p  {
+  font-size: 5em;
+  text-align: center;
+}
+
+.navtimer .edit_task {
+  text-align: center;
 }
