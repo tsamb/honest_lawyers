@@ -16,7 +16,7 @@
       <% end %>
       <p id="task-user">Author: <%= (current_user.name) %></p>
     </div>
-    <p id="task-start-time">Started at: <%= current_task.start_time.strftime("%H:%M ( %m/%d/%Y )") %></p>
+    <p id="task-start-time">Started at: <%= current_task.start_time.getlocal.strftime("%I:%M %p ( %m/%d/%Y )") %></p>
     <div id="ticker-container">
       <p id="task-run-time"><label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></p>
       <%= form_for(current_task, {url: stop_task_path(current_task), method: :post}) do |f| %>
