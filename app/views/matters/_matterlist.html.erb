@@ -16,7 +16,7 @@
     <td><%= matter.user.name %></td>
     <td><%= matter.client.name %></td>
     <td><% if matter.open %> Open <% else %> Closed <% end %></td>
-    <td><%= matter.updated_at %></td>
+    <td><%= matter.updated_at.getlocal.strftime("%I:%M %p ( %m/%d/%Y )") %></td>
     <td>
       <% if matter.open && !current_task %>
         <%= link_to "Add Task", matter_tasks_path(matter), method: :post %>

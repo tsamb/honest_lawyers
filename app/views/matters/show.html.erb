@@ -57,9 +57,9 @@
       <% else %>
       <td></td>
     <% end %>
-    <td><%= task.start_time %></td>
+    <td><%= task.start_time.getlocal.strftime("%I:%M %p ( %m/%d/%Y )") %></td>
     <td><% if task.end_time %>
-       <%= task.end_time %>
+       <%= task.end_time.getlocal.strftime("%I:%M %p ( %m/%d/%Y )") %>
     <% else %>
        pending
     <% end %></td>
