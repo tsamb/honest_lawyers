@@ -1,6 +1,6 @@
 <div class="container">
 
-<%= form_for(@task) do |f| %>
+<%= form_for(@task, :html => {:class => "edit_task_static"} ) do |f| %>
 <h2>Edit Task</h2>
   <p><%= f.label :type, "Type: " %>
   <% if @task.type %>
