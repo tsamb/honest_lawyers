@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates_presence_of :email, :name#, :password # leaving this here breaks saving on the user object
+  validates_presence_of :email, :name, :password_digest#, :password # leaving this here breaks saving on the user object
 
   def current_task_seconds
     if self.current_task_id
